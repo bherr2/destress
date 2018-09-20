@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Destress</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; height=device-height;">
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+            img {
+                padding: 0;
+                display: block;
+                margin: 0 auto;
+                height: 100vh;
+                width: 100vh;
+            }
+            body > div {
+                width: 100vw;
+                height: 100vh;
+            }
+            .hidden {
+                display: none;
+            }
+            @media screen and (orientation:portrait) {
+                img {
+                    height: 100vw;
+                    width: 100vw;
+                    position: relative;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            @media screen and (orientation:landscape) {
+                img {
+                    height: 100vh;
+                    width: 100vh;
+                }
+            }
+            .copyright {
+                font-size: 8px;
+                color: white;
+                height: 10px;
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+                text-align: right;
+                padding-right: 5px;
+            }
+            .copyright a {
+                color: white;
+            }
+            
+            .stress1 {
+                background-color: #B295CF;
+            }
+            .stress2 {
+                background-color: #95CFB7;
+            }
+            .stress3 {
+                background-color: #98A0CC;
+            }
+            .stress5 {
+                background-color: #CFC894;
+            }
+            .stress7 {
+                background-color: #CF9594;
+            }
+            .stress8 {
+                background-color: #95BFCF;
+            }
+        </style>
+        <script>
+            function nextDestress(element, nextStress) {
+                element.classList.add("hidden");
+                var next = document.getElementsByClassName(nextStress)[0];
+                next.classList.remove("hidden");
+            }
+        </script>
+    </head>
+    <body>
+        <!-- http://www.destressmonday.org/6-gifs-help-relax/ -->
+        <div class="stress1 hidden" onclick="nextDestress(this, 'stress2')">
+            <img src="images/DestressBreathing1b_Final.gif">
+        </div>
+        <div class="stress2" onclick="nextDestress(this, 'stress3')">
+            <img src="images/DestressBreathing2_Final.gif">
+        </div>
+        <div class="stress3 hidden" onclick="nextDestress(this, 'stress5')">
+            <img src="images/DestressBreathing3_Final.gif">
+        </div>
+        <div class="stress5 hidden" onclick="nextDestress(this, 'stress7')">
+            <img src="images/DestressBreathing5c_Final.gif">
+        </div>
+        <div class="stress7 hidden" onclick="nextDestress(this, 'stress8')">
+            <img src="images/DestressBreathing7_Final.gif">
+        </div>
+        <div class="stress8 hidden" onclick="nextDestress(this, 'stress1')">
+            <img src="images/DestressBreathing8c_Final.gif">
+        </div>
+        <div class="copyright">
+            All images ©2015-2016 The Monday Campaigns, Inc. &mdash; <a href="http://www.destressmonday.org/6-gifs-help-relax/">Source</a>
+        </div>
+    </body>
+</html>
+
