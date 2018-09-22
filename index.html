@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- http://www.destressmonday.org/6-gifs-help-relax/ -->
         <title>Destress</title>
+        <meta name="viewport" content="width=device-width, height=device-height">
+        <meta name="theme-color" content="#95CFB7">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; height=device-height;">
         <style>
             html, body {
                 margin: 0;
@@ -51,57 +53,44 @@
             .copyright a {
                 color: white;
             }
-            
-            .stress1 {
-                background-color: #B295CF;
-            }
-            .stress2 {
-                background-color: #95CFB7;
-            }
-            .stress3 {
-                background-color: #98A0CC;
-            }
-            .stress5 {
-                background-color: #CFC894;
-            }
-            .stress7 {
-                background-color: #CF9594;
-            }
-            .stress8 {
-                background-color: #95BFCF;
-            }
         </style>
-        <script>
-            function nextDestress(element, nextStress) {
-                element.classList.add("hidden");
-                var next = document.getElementsByClassName(nextStress)[0];
-                next.classList.remove("hidden");
-            }
-        </script>
     </head>
     <body>
-        <!-- http://www.destressmonday.org/6-gifs-help-relax/ -->
-        <div class="stress1 hidden" onclick="nextDestress(this, 'stress2')">
-            <img src="images/DestressBreathing1b_Final.gif">
-        </div>
-        <div class="stress2" onclick="nextDestress(this, 'stress3')">
-            <img src="images/DestressBreathing2_Final.gif">
-        </div>
-        <div class="stress3 hidden" onclick="nextDestress(this, 'stress5')">
-            <img src="images/DestressBreathing3_Final.gif">
-        </div>
-        <div class="stress5 hidden" onclick="nextDestress(this, 'stress7')">
-            <img src="images/DestressBreathing5c_Final.gif">
-        </div>
-        <div class="stress7 hidden" onclick="nextDestress(this, 'stress8')">
-            <img src="images/DestressBreathing7_Final.gif">
-        </div>
-        <div class="stress8 hidden" onclick="nextDestress(this, 'stress1')">
-            <img src="images/DestressBreathing8c_Final.gif">
+        <div onclick="nextDestressor()">
+            <img>
         </div>
         <div class="copyright">
             All images ©2015-2016 The Monday Campaigns, Inc. &mdash; <a href="http://www.destressmonday.org/6-gifs-help-relax/">Source</a>
         </div>
     </body>
+    
+    <script>
+        destressors = [
+            { url: 'DestressBreathing1b_Final.gif', color: '#B295CF' },
+            { url: 'DestressBreathing2_Final.gif', color: '#95CFB7' },
+            { url: 'DestressBreathing3_Final.gif', color: '#98A0CC' },
+            { url: 'DestressBreathing5c_Final.gif', color: '#CFC894' },
+            { url: 'DestressBreathing7_Final.gif', color: '#CF9594' },
+            { url: 'DestressBreathing8c_Final.gif', color: '#95BFCF' }
+        ];
+        selectedDestressor = destressors[0];
+        
+        function nextDestressor() {
+            var metaThemeColor = document.querySelector("meta[name=theme-color]");
+            var img = document.querySelector("img");
+            var div = document.querySelector("div");
+
+            var index = destressors.indexOf(selectedDestressor) + 1;
+            if (index === destressors.length) {
+              index = 0;
+            }
+            selectedDestressor = destressors[index];
+
+            img.setAttribute('src', 'images/'+selectedDestressor.url);
+            div.style.backgroundColor = selectedDestressor.color;
+            metaThemeColor.setAttribute('content', selectedDestressor.color);
+        }
+        nextDestressor();
+    </script>
 </html>
 
