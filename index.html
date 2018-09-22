@@ -64,26 +64,20 @@
         </div>
         
         <div class="hidden">
-            <img src="images/DestressBreathing1b_Final.gif">
-            <img src="images/DestressBreathing2_Final.gif">
-            <img src="images/DestressBreathing3_Final.gif">
-            <img src="images/DestressBreathing5c_Final.gif">
-            <img src="images/DestressBreathing7_Final.gif">
-            <img src="images/DestressBreathing8c_Final.gif">
+            <img src="images/DestressBreathing1b_Final.gif" style="background-color: #B295CF">
+            <img src="images/DestressBreathing2_Final.gif" style="background-color: #95CFB7">
+            <img src="images/DestressBreathing3_Final.gif" style="background-color: #98A0CC">
+            <img src="images/DestressBreathing5c_Final.gif" style="background-color: #CFC894">
+            <img src="images/DestressBreathing7_Final.gif" style="background-color: #CF9594">
+            <img src="images/DestressBreathing8c_Final.gif" style="background-color: #95BFCF">
         </div>
     </body>
     
     <script>
-        destressors = [
-            { url: 'DestressBreathing1b_Final.gif', color: '#B295CF' },
-            { url: 'DestressBreathing2_Final.gif', color: '#95CFB7' },
-            { url: 'DestressBreathing3_Final.gif', color: '#98A0CC' },
-            { url: 'DestressBreathing5c_Final.gif', color: '#CFC894' },
-            { url: 'DestressBreathing7_Final.gif', color: '#CF9594' },
-            { url: 'DestressBreathing8c_Final.gif', color: '#95BFCF' }
-        ];
+        destressors = [];
+        document.querySelectorAll(".hidden img").forEach(function(f) { destressors.push(f); });
         selectedDestressor = destressors[0];
-        
+
         function nextDestressor() {
             var metaThemeColor = document.querySelector("meta[name=theme-color]");
             var img = document.querySelector("img");
@@ -95,9 +89,9 @@
             }
             selectedDestressor = destressors[index];
 
-            img.setAttribute('src', 'images/'+selectedDestressor.url);
-            div.style.backgroundColor = selectedDestressor.color;
-            metaThemeColor.setAttribute('content', selectedDestressor.color);
+            img.setAttribute('src', selectedDestressor.src);
+            div.style.backgroundColor = selectedDestressor.style.backgroundColor;
+            metaThemeColor.setAttribute('content', selectedDestressor.style.backgroundColor);
         }
         nextDestressor();
     </script>
