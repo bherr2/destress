@@ -78,7 +78,7 @@
         document.querySelectorAll(".hidden img").forEach(function(f) { destressors.push(f); });
         selectedDestressor = destressors[0];
         
-        cosnt preload = destressors.map(img => { const i=new Image(); i.src=img.src; return i; });
+        const preload = destressors.map(img => { const i=new Image(); i.src=img.src; return i; });
 
         function nextDestressor() {
             var metaThemeColor = document.querySelector("meta[name=theme-color]");
